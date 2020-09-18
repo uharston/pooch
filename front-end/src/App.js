@@ -7,7 +7,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-   
+        <form>
+          <input type='text' />
+          <input type='submit' value='Go'/>
+        </form>
+        
       </header>
     </div>
   );
