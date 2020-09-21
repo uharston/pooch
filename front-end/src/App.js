@@ -12,8 +12,11 @@ function App() {
     <div className="App">
         <NavBar />
         <LandingPageContainer />
+
     </div>
   );
 }
 
 export default App;
+
+
