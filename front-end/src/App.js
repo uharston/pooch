@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <NavBar />
         <Route exact path="/" component={ LandingPageContainer } />
-        <Route exact path="/search" component={ SearchContainer } />
+        <Route path="/search" component={ SearchContainer } />
       </div>
     </Router>
 
