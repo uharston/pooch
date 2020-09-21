@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Provider } from 'react-redux'; 
-import { createStore, applyMiddleware } from 'redux'; 
-import { thunk } from 'react-thunk'
-import petsReducer from './reducers/petsReducer'
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import petsReducer from './reducers/petsReducer';
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(petsReducer, applyMiddleware(thunk) )
+const store = createStore(petsReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  <Provider>
+  <Provider store={store}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
