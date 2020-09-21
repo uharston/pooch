@@ -4,7 +4,7 @@ class NavBar extends Component {
     render() {
         return(
             <div className='NavBar'>
-                NavBar
+                Pooch Logo Left - Sign Up Right - Log In Right
             </div>
         )
     }
