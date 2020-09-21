@@ -9,7 +9,8 @@ Checklist
 Landing Page 
     [X] Search Bar
     [] Background Image
-    [] Navigation Bar 
+    [X] Navigation Bar 
 
 [] Set up routes 
-    [] Set up navbar
+    [X] Set up navbar
+    [] Routes boiler plate
