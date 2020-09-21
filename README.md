@@ -4,9 +4,9 @@ Pooch is a dogs up for adoption finder powered by PetFinder's API.
 
 Checklist
 
-[] Find a logo 
+[X] Find a logo 
 
 Landing Page 
-    [] Search Bar
+    [X] Search Bar
     [] Background Image
     [] Navigation Bar 
