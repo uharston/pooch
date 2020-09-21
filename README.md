@@ -12,3 +12,4 @@ Landing Page
     [] Navigation Bar 
 
 [] Set up routes 
+    [] Set up navbar
