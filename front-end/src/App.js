@@ -1,7 +1,11 @@
 import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar'
-import LandingPageContainer from './containers/LandingPageContainer'
+import {
+  BrowserRouter as Router, 
+  Route 
+} from 'react-router-dom';
+import NavBar from './components/NavBar';
+import LandingPageContainer from './containers/LandingPageContainer';
 
 function App() {
   return (
