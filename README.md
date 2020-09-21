@@ -10,3 +10,5 @@ Landing Page
     [X] Search Bar
     [] Background Image
     [] Navigation Bar 
+
+[] Set up routes 
