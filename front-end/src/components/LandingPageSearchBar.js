@@ -12,12 +12,16 @@ class LandingPageSearchBar extends Component {
         })
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+    }
+
     render() {
         return(
             <div className="landing-page-search-bar">
-                <form>
+                <form onSubmit={ (event) => this.handleSubmit(event) }>
                     <label>Enter location: </label>
-                    <input type='text' onChange={ (e) => this.handleChange(e) }/>
+                    <input type='text' onChange={ (e) => this.handleChange(e) } />
                     <input type='submit' value='Go'/>
                 </form>
             </div>
