@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 class NavBar extends Component {
     render() {
         return(
-            <div className='NavBar'>
+            <div className='navbar'>
+                <NavLink to='/search'>Search</NavLink>
                 Pooch Logo Left - Sign Up Right - Log In Right
             </div>
         )
