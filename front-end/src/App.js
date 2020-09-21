@@ -6,14 +6,18 @@ import {
 } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import LandingPageContainer from './containers/LandingPageContainer';
+import SearchContainer from './containers/SearchContainer'
 
 function App() {
   return (
-    <div className="App">
+    <Router> 
+      <div className="App">
         <NavBar />
-        <LandingPageContainer />
+        <Route exact path="/" component={ LandingPageContainer } />
+        <Route exact path="/search" component={ SearchContainer } />
+      </div>
+    </Router>
 
-    </div>
   );
 }
 
