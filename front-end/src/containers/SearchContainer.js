@@ -6,11 +6,15 @@ import { fetchPets } from '../actions/petsAction';
 
 class SearchContainer extends Component {
 
+
+
     componentDidMount() {
         
         let path = this.props.location.pathname.split('/')
-        let param = path[ path.length - 1 ]
-        this.props.fetchPets(param)
+        
+        let param = Object.assign( {}, {city: path[path.length - 1], state: path[path.length - 2] } )
+       
+        this.props.fetchPets( param )
         // debugger
         // CALL DISPATCH 
         // DO FETCH CALL
@@ -20,8 +24,10 @@ class SearchContainer extends Component {
         console.log(this.props)
         return(
             <div className='search-container'>
-                { this.props.pets.map( pet => pet.url ) }
-                {this.props.location.pathname}
+                <h1>Search</h1>
+                <ul>
+                    { this.props.pets.map( pet => <li>{pet.name}</li> ) }
+                </ul>
             </div>
         )
     }
@@ -35,7 +41,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return dispatch 
+    // return {
+    //     fetchPets: 
+    // }
 }
 
-export default connect (mapStateToProps, { fetchPets} ) (SearchContainer)
+export default connect (mapStateToProps, { fetchPets } ) (SearchContainer)
