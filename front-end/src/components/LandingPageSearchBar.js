@@ -15,10 +15,8 @@ class LandingPageSearchBar extends Component {
     }
 
     handleSubmit = (event) => {
-        // fetch pets dispatch here 
         event.preventDefault();
         this.props.history.push(`search/${this.state.query}`)
-
     }
 
     render() {
