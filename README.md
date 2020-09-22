@@ -15,11 +15,13 @@ Landing Page
     [X] Set up navbar
     [X] Routes boiler plate
 
-[] Do first fetch request 
+[X] Do first fetch request 
     [X] Learn how to redirect on form submission 
-    [] //pass down fetchPets dispatch to LandingPageSearchBar
-    [] //fetch pets dispatch here 
-    [] //transform query to a suitable url string 
+
+[X] Do a fetch with city, and state
+[X] Pass pathname into fetchPets
+
+[] Create Location Suggestion on Search Bar 
 
 
 
