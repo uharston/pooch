@@ -16,7 +16,9 @@ class LandingPageSearchBar extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.history.push(`search/${this.state.query}`)
+        let [city, state] = this.state.query.split(',')
+        let cityAndState = `${ state.toLowerCase().trim() }/${ city.toLowerCase().trim() }`
+        this.props.history.push(`search/${cityAndState}`)
     }
 
     render() {
