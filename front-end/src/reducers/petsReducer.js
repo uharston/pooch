@@ -1,4 +1,5 @@
-const petsReducer = ( state = [], action ) => {
+const petsReducer = ( state = { cats: [], loading: false}, action ) => {
+   
     switch(action.type) {
         case 'LOADING_PETS': 
             return state 
