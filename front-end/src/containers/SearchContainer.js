@@ -7,19 +7,20 @@ import { fetchPets } from '../actions/petsAction';
 class SearchContainer extends Component {
 
     componentDidMount() {
+        
         let path = this.props.location.pathname.split('/')
         let param = path[ path.length - 1 ]
         this.props.fetchPets(param)
-        debugger
+        // debugger
         // CALL DISPATCH 
         // DO FETCH CALL
     }
 
     render() {
-        
+        console.log(this.props)
         return(
             <div className='search-container'>
-                Search Container
+                { this.props.pets.map( pet => pet.url ) }
                 {this.props.location.pathname}
             </div>
         )
@@ -27,7 +28,14 @@ class SearchContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    return state 
+    return {
+        pets: state.pets,
+        loading: state.loading
+    }
 }
 
-export default connect (mapStateToProps, { fetchPets } ) (SearchContainer)
+const mapDispatchToProps = dispatch => {
+    return dispatch 
+}
+
+export default connect (mapStateToProps, { fetchPets} ) (SearchContainer)
