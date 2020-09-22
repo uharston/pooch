@@ -1,11 +1,11 @@
 import React, { Component } from 'react'; 
-import { Redirect } from 'react-router-dom'; 
+import { withRouter } from 'react-router-dom'; 
+
 
 class LandingPageSearchBar extends Component {
 
     state = {
-        query: '',
-        submitted: false
+        query: ''
     }
 
     handleChange = (event) => {
@@ -15,19 +15,14 @@ class LandingPageSearchBar extends Component {
     }
 
     handleSubmit = (event) => {
+        // fetch pets dispatch here 
         event.preventDefault();
-        this.setState({
-            submitted: true 
-        })
-    }
+        this.props.history.push(`search/${this.state.query}`)
 
-    redirect = (query) => {
-        if(this.state.submitted) {
-            return <Redirect to={"/search/" + query} />
-        }
     }
 
     render() {
+     
         return(
             <div className="landing-page-search-bar">
                 <p> Search by: </p> 
@@ -38,11 +33,9 @@ class LandingPageSearchBar extends Component {
                     <input type='text' onChange={ (e) => this.handleChange(e) } />
                     <input type='submit' value='Go'/>
                 </form>
-                
-                { this.redirect(this.state.query) }
             </div>
         )
     }
 }
 
-export default LandingPageSearchBar
+export default withRouter(LandingPageSearchBar)
