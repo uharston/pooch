@@ -7,7 +7,7 @@
 // export default rootReducer; 
 
 const petsReducer = ( state = { pets: [], loading: false, api_token: {} }, action ) => {
-  
+   
     switch(action.type) {
         case 'ADD_API_TOKEN':
             
@@ -30,7 +30,8 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {} }, actio
             return {
                 ...state, 
                 pets: action.pets.animals, 
-                loading: false
+                loading: false, 
+                pagination: action.pets.pagination
             }
         default: 
             return state 
