@@ -1,7 +1,7 @@
 
 
 export const fetchPets = function(param) {
-  
+
     return function(dispatch, getState)  {
         
         dispatch({ type: 'LOADING_PETS' })
@@ -19,7 +19,7 @@ export const fetchPets = function(param) {
                 .then(token => {
                     // console.log( token )
                     
-                    fetch(`https://api.petfinder.com/v2/animals?location=${param.city},%20${param.state}&type=dog`, {
+                    fetch(param, {
                         headers: { 
                             Authorization: `Bearer ${token.responseJSON.access_token}`}
                         })
@@ -35,7 +35,7 @@ export const fetchPets = function(param) {
                   
         }
         else {
-            fetch(`https://api.petfinder.com/v2/animals?location=${param.city},%20${param.state}&type=dog`, {
+            fetch(param, {
                 headers: { 
                     Authorization: `Bearer ${getState().api_token.token}`}
                 })
@@ -50,5 +50,7 @@ export const fetchPets = function(param) {
         }   
     }
 }
+
+
 
 
