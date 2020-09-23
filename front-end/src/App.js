@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import LandingPageContainer from './containers/LandingPageContainer';
-import SearchContainer from './containers/SearchContainer'
+import PetsContainer from './containers/PetsContainer'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <NavBar />
         <Route exact path="/" component={ LandingPageContainer } />
-        <Route path="/search" component={ SearchContainer } />
+        <Route path="/search" component={ PetsContainer } />
       </div>
     </Router>
 
