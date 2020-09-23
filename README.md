@@ -18,15 +18,14 @@ Landing Page
 [X] Do first fetch request 
     [X] Learn how to redirect on form submission 
 
-[X] Do a fetch with city, and state
-[X] Pass pathname into fetchPets
+[X] Neaten up form input to a nice url params 
 
-[] Create Location Suggestion on Search Bar 
+[X] Seperate and set timer on access token fetch call 
 
+[X] Set up pagination on index page 
+    [] Set up paginated links
 
-
-1. Redirect on form submit using pushState to history 
-2. Neaten up form input to a nice url params 
+[] Create suggestive search bar 
 
 
 
