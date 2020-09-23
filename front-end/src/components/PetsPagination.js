@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 class PetsPagination extends Component {
 
     handleClick = () => {
-        this.props.fetchPets(`https://api.petfinder.com${this.props.pagination._links.next.href}`)
+        const newPath = this.props.location.pathname + '/&page=' + this.props.pagination._links.next.href.split('=').slice(-1)[0]
+        this.props.history.push(newPath)
+        // this.props.fetchPets(`https://api.petfinder.com${this.props.pagination._links.next.href}`)
+    }
+
+    componentDidUpdate() {
+        console.log("pagination update")
     }
 
     render = () => {
@@ -21,4 +28,4 @@ class PetsPagination extends Component {
 
 }
 
-export default PetsPagination
+export default withRouter(PetsPagination)
