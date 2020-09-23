@@ -17,8 +17,8 @@ export const fetchPets = function(param) {
                 .then(response => response.json() )
                 .then(responseJSON => dispatch({ type: 'ADD_API_TOKEN', responseJSON }) )
                 .then(token => {
-                    console.log( token )
-                    debugger
+                    // console.log( token )
+                    
                     fetch(`https://api.petfinder.com/v2/animals?location=${param.city},%20${param.state}&type=dog`, {
                         headers: { 
                             Authorization: `Bearer ${token.responseJSON.access_token}`}
@@ -28,7 +28,7 @@ export const fetchPets = function(param) {
                             console.log(responseJSON)
                             dispatch({ 
                                 type: 'ADD_PETS', 
-                                pets: responseJSON
+                                pets: responseJSON,
                             })
                         })
                 })
@@ -41,7 +41,7 @@ export const fetchPets = function(param) {
                 })
                 .then(response => response.json())
                 .then(responseJSON => {
-                    console.log(responseJSON)
+                    // console.log(responseJSON)
                     dispatch({ 
                         type: 'ADD_PETS', 
                         pets: responseJSON
