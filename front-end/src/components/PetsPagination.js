@@ -2,17 +2,23 @@ import React, { Component } from 'react';
 
 class PetsPagination extends Component {
 
-    renderPagination = (pagination) => {
-        return pagination ? <h3>{this.props.pagination.current_page} of {this.props.pagination.total_pages}</h3> : null 
+    handleClick = () => {
+        this.props.fetchPets(`https://api.petfinder.com${this.props.pagination._links.next.href}`)
     }
 
-    render() {
-        return(
-            <div className='pets-pagination'>
-                { this.renderPagination(this.props.pagination) }
-            </div>
-        )
+    render = () => {
+        if(this.props.pagination) {
+            
+            return (
+                <div className='pets-pagination'>
+                    <h3>{this.props.pagination.current_page} of {this.props.pagination.total_pages}</h3>
+                    <button onClick={() => this.handleClick()}>Next Page</button>
+                </div>
+            )
+        }
+        return null    
     }
+
 }
 
 export default PetsPagination
