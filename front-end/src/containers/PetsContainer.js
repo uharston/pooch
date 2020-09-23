@@ -12,9 +12,29 @@ class PetsContainer extends Component {
 
     componentDidMount() {
         let path = this.props.location.pathname.split('/')
-        let cityAndState = Object.assign( {}, {city: path[path.length - 1], state: path[path.length - 2] } )
-        let param = `https://api.petfinder.com/v2/animals?location=${cityAndState.city},%20${cityAndState.state}&type=dog`
-        this.props.fetchPets( param )
+        console.log('mount', path)
+        if( path.slice(-1)[0].includes('page') ) {
+            let params = Object.assign( {}, {city: path[path.length - 2], state: path[path.length - 3], page: path[path.length - 1]} )
+            let url = `https://api.petfinder.com/v2/animals?location=${params.city},%20${params.state}&type=dog/${params.page}`
+            this.props.fetchPets( url )
+        }
+        else {
+            let params = Object.assign( {}, {city: path[path.length - 1], state: path[path.length - 2] } )
+            let url = `https://api.petfinder.com/v2/animals?location=${params.city},%20${params.state}&type=dog`
+            this.props.fetchPets( url )
+        }
+        
+    }
+
+    componentDidUpdate() {
+        // if(!!this.props.pets[0]){
+        //     let path = this.props.location.pathname.split('/')
+        //     console.log('update', path)
+        //     debugger
+        //     let cityAndState = Object.assign( {}, {city: path[path.length - 1], state: path[path.length - 2] } )
+        //     let param = `https://api.petfinder.com/v2/animals?location=${cityAndState.city},%20${cityAndState.state}&type=dog`
+        // }
+        // this.props.fetchPets( param )
     }
 
     renderPhoto = (pet) => {
@@ -26,7 +46,7 @@ class PetsContainer extends Component {
     // }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return(
             <div className='search-container'>
                 <h1>Search</h1>
