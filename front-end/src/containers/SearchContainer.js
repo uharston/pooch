@@ -18,11 +18,16 @@ class SearchContainer extends Component {
         return pet.primary_photo_cropped ? <img src={pet.primary_photo_cropped.small} /> : <p> NO PHOTO FOUND </p>
     }
 
+    renderPagination = (pagination) => {
+        return pagination ? <h3>{this.props.pagination.current_page} of {this.props.pagination.total_pages}</h3> : null 
+    }
+
     render() {
         console.log(this.props)
         return(
             <div className='search-container'>
                 <h1>Search</h1>
+                { this.renderPagination(this.props.pagination) }
                 <ul>
                     { this.props.pets.map( pet => <li>{pet.name} {this.renderPhoto(pet)}</li> ) }
                 </ul>
@@ -34,7 +39,8 @@ class SearchContainer extends Component {
 const mapStateToProps = state => {
     return {
         pets: state.pets,
-        loading: state.loading
+        loading: state.loading, 
+        pagination: state.pagination
     }
 }
 
