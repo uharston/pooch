@@ -25,7 +25,7 @@ export const fetchPets = function(param) {
                         })
                         .then(response => response.json())
                         .then(responseJSON => {
-                            console.log(responseJSON)
+                            // console.log(responseJSON)
                             dispatch({ 
                                 type: 'ADD_PETS', 
                                 pets: responseJSON,
