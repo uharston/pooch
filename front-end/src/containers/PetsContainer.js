@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPets } from '../actions/petsAction';
 
+import PetsPagination from '../components/PetsPagination'
+
 
 
 class PetsContainer extends Component {
@@ -10,7 +12,8 @@ class PetsContainer extends Component {
 
     componentDidMount() {
         let path = this.props.location.pathname.split('/')
-        let param = Object.assign( {}, {city: path[path.length - 1], state: path[path.length - 2] } )
+        let cityAndState = Object.assign( {}, {city: path[path.length - 1], state: path[path.length - 2] } )
+        let param = `https://api.petfinder.com/v2/animals?location=${cityAndState.city},%20${cityAndState.state}&type=dog`
         this.props.fetchPets( param )
     }
 
@@ -18,16 +21,17 @@ class PetsContainer extends Component {
         return pet.primary_photo_cropped ? <img src={pet.primary_photo_cropped.small} /> : <p> NO PHOTO FOUND </p>
     }
 
-    renderPagination = (pagination) => {
-        return pagination ? <h3>{this.props.pagination.current_page} of {this.props.pagination.total_pages}</h3> : null 
-    }
+    // renderPagination = (pagination) => {
+    //     return pagination ? <h3>{this.props.pagination.current_page} of {this.props.pagination.total_pages}</h3> : null 
+    // }
 
     render() {
         console.log(this.props)
         return(
             <div className='search-container'>
                 <h1>Search</h1>
-                { this.renderPagination(this.props.pagination) }
+                <PetsPagination pagination={this.props.pagination} fetchPets={this.props.fetchPets} /> 
+                {/* { this.renderPagination(this.props.pagination) } */}
                 <ul>
                     { this.props.pets.map( pet => <li>{pet.name} {this.renderPhoto(pet)}</li> ) }
                 </ul>
