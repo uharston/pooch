@@ -11,11 +11,12 @@ class PetsContainer extends Component {
 
 
     componentDidMount() {
+        debugger
         let path = this.props.location.pathname.split('/')
         console.log('mount', path)
         if( path.slice(-1)[0].includes('page') ) {
             let params = Object.assign( {}, {city: path[path.length - 2], state: path[path.length - 3], page: path[path.length - 1]} )
-            let url = `https://api.petfinder.com/v2/animals?location=${params.city},%20${params.state}&type=dog/${params.page}`
+            let url = `https://api.petfinder.com/v2/animals?location=${params.city},%20${params.state}&type=dog${params.page}`
             this.props.fetchPets( url )
         }
         else {
@@ -28,7 +29,18 @@ class PetsContainer extends Component {
 
     componentDidUpdate() {
         // if(!!this.props.pets[0]){
-        //     let path = this.props.location.pathname.split('/')
+        //   let path = this.props.location.pathname.split('/')
+        //   debugger
+        //   if( path.slice(-1)[0].includes('page') ) {
+        //     let params = Object.assign( {}, {city: path[path.length - 2], state: path[path.length - 3], page: path[path.length - 1]} )
+        //     let url = `https://api.petfinder.com/v2/animals?location=${params.city},%20${params.state}&type=dog/${params.page}`
+        //     this.props.fetchPets( url )
+        // }
+        // else {
+        //     let params = Object.assign( {}, {city: path[path.length - 1], state: path[path.length - 2] } )
+        //     let url = `https://api.petfinder.com/v2/animals?location=${params.city},%20${params.state}&type=dog`
+        //     this.props.fetchPets( url )
+        // }
         //     console.log('update', path)
         //     debugger
         //     let cityAndState = Object.assign( {}, {city: path[path.length - 1], state: path[path.length - 2] } )
