@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchPets } from '../actions/petsAction';
 
@@ -11,17 +12,14 @@ class PetsContainer extends Component {
 
 
     componentDidMount() {
-        debugger
         let path = this.props.location.pathname.split('/')
-        console.log('mount', path)
         if( path.slice(-1)[0].includes('page') ) {
             let params = Object.assign( {}, {city: path[path.length - 2], state: path[path.length - 3], page: path[path.length - 1]} )
-            let url = `https://api.petfinder.com/v2/animals?location=${params.city},%20${params.state}&type=dog${params.page}`
+            let url = `https://api.petfinder.com/v2/animals?location=${this.props.match.params.city},%20${this.props.match.params.state}&type=dog${this.props.match.params.page}`
             this.props.fetchPets( url )
         }
         else {
-            let params = Object.assign( {}, {city: path[path.length - 1], state: path[path.length - 2] } )
-            let url = `https://api.petfinder.com/v2/animals?location=${params.city},%20${params.state}&type=dog`
+            let url = `https://api.petfinder.com/v2/animals?location=${this.props.match.params.city},%20${this.props.match.params.state}&type=dog`
             this.props.fetchPets( url )
         }
         
@@ -58,9 +56,9 @@ class PetsContainer extends Component {
     // }
 
     render() {
-        // console.log(this.props)
         return(
             <div className='search-container'>
+                {/* <Route path={`${this.props.match.url}/:state/:city`} render{ routerProps => } */}
                 <h1>Search</h1>
                 <PetsPagination pagination={this.props.pagination} fetchPets={this.props.fetchPets} /> 
                 {/* { this.renderPagination(this.props.pagination) } */}
@@ -80,10 +78,5 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    // return {
-    //     fetchPets: 
-    // }
-}
 
 export default connect (mapStateToProps, { fetchPets } ) (PetsContainer)
