@@ -18,11 +18,10 @@ class LandingPageSearchBar extends Component {
         event.preventDefault();
         let [city, state] = this.state.query.split(',')
         let cityAndState = `${ state.toLowerCase().trim() }/${ city.toLowerCase().trim() }`
-        this.props.history.push(`search/${cityAndState}`)
+        this.props.history.push(`search/${cityAndState}/&page=1`)
     }
 
     render() {
-     
         return(
             <div className="landing-page-search-bar">
                 <p> Search by: </p> 
