@@ -14,7 +14,8 @@ function App() {
       <div className="App">
         <NavBar />
         <Route exact path="/" component={ LandingPageContainer } />
-        <Route path="/search" component={ PetsContainer } />
+        {/* <Route path="/search" component={ PetsContainer } /> */}
+        <Route path='/search/:state/:city' render={ routerProps => <PetsContainer {...routerProps} /> } />
       </div>
     </Router>
 
