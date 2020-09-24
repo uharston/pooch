@@ -22,12 +22,6 @@ class LandingPageSearchBar extends Component {
         })
     }
 
-    handleGoogleAutocomplete = (event) => {
-        debugger
-    }
-
-
-
     handleSubmit = (event) => {
         event.preventDefault();
         const place = event.target.getElementsByClassName('css-1uccc91-singleValue')[0].textContent
@@ -46,9 +40,6 @@ class LandingPageSearchBar extends Component {
                 <form onSubmit={ (event) => this.handleSubmit(event) }>
                     <label>Breed:</label>
                     <input type="text" onChange={ (e) => this.handleBreedChange(e)} /> 
-
-
-
                     <GooglePlacesAutocomplete 
                         apiKey="AIzaSyAogTqS8y_uMthvPq5C16K8RRLqLKqG5sE" 
                         autocompletionRequest={{
@@ -57,10 +48,6 @@ class LandingPageSearchBar extends Component {
                             }
                         }}  
                     />
-
-
-
-
                     {/* <label>Enter location: </label>
                     <input type='text' onChange={ (e) => this.handleLocationChange(e) } /> */}
                     <input type='submit' value='Go'/>
