@@ -6,9 +6,17 @@
 
 // export default rootReducer; 
 
-const petsReducer = ( state = { pets: [], loading: false, api_token: {} }, action ) => {
+const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [] }, action ) => {
    
     switch(action.type) {
+     
+        case 'ADD_BREEDS': 
+       
+         const sanitizedBreeds = action.breeds.map( e => e.name )
+            return {
+                ...state, 
+                breeds: sanitizedBreeds
+            }
         case 'ADD_API_TOKEN':
             
             return {
