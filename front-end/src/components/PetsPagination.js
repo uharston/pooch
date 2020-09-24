@@ -4,18 +4,15 @@ import { withRouter } from 'react-router-dom';
 class PetsPagination extends Component {
 
     handleClick = () => {
-        const newPath = this.props.location.pathname + '/&page=' + this.props.pagination._links.next.href.split('=').slice(-1)[0]
-        this.props.history.push(newPath)
-        // this.props.fetchPets(`https://api.petfinder.com${this.props.pagination._links.next.href}`)
-    }
-
-    componentDidUpdate() {
-        console.log("pagination update")
+        const currentPage = this.props.pagination.current_page 
+        const splitUrl = this.props.match.url.split('=')
+        splitUrl.splice(-1, 1, currentPage + 1)
+        this.props.history.push(splitUrl.join('='))
+        this.props.fetchPets(`https://api.petfinder.com${this.props.pagination._links.next.href}`)
     }
 
     render = () => {
         if(this.props.pagination) {
-            
             return (
                 <div className='pets-pagination'>
                     <h3>{this.props.pagination.current_page} of {this.props.pagination.total_pages}</h3>
