@@ -1,6 +1,6 @@
 export const fetchBreeds = () => {
     return (dispatch) => {
-        fetch("http://127.0.0.1:4000/dogbreeds")
+        fetch("http://127.0.0.1:4000/breeds")
         .then(response => response.json())
         .then(breeds => dispatch({ type: 'ADD_BREEDS', breeds}))
     }
