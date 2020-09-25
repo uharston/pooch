@@ -27,12 +27,23 @@ Landing Page
 
 [X] Create suggestive search bar for location 
 
-[] Create suggestive search bar for breeds 
-    [] 
-
-[] Abstract petActions methods into smaller methods 
+[X] Create suggestive search bar for breeds 
 
 [] Clearly define all the routes and how I will implement those routes 
+
+[]
+
+[] Connect back end to git hub
+
+[] Post request to back-end 
+    [] Get back-end working 
+    [] Implement a log in feature 
+
+[] Do CSS
+
+[] Make a show page for dog 
+
+[] Improve Pagination 
 
 
 
