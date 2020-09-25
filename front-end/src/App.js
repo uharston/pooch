@@ -8,7 +8,9 @@ import NavBar from './components/NavBar';
 import LandingPageContainer from './containers/LandingPageContainer';
 import PetsContainer from './containers/PetsContainer'
 
+
 function App() {
+
   return (
     <Router> 
       <div className="App">
