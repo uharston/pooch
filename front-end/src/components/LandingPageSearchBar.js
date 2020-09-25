@@ -25,26 +25,35 @@ class LandingPageSearchBar extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const place = event.target.getElementsByClassName('css-1uccc91-singleValue')[0].textContent
+        const [breed, state, city] = this.sanitizeRouteParams(place) 
+        let route = `${breed}/${state}/${city}`
+        this.props.history.push(`search/${route}/&page=1`)
+    }
+
+    sanitizeRouteParams = (place) => {
+        let breed
+        this.state.breed === 'Any Breed' ? breed = 'all-dogs' : breed = this.state.breed
+        const sanitizedBreed = breed.split(' ').map( word => word.toLowerCase().trim() ).join('-')
         let [city, state] = place.split(', ' ).slice(-3)
-        let cityAndState = `${ state.toLowerCase().trim() }/${ city.toLowerCase().trim() }`
-        this.props.history.push(`search/${cityAndState}/&page=1`)
+        const sanitizedCity = city.split(' ').map( word => word.toLowerCase().trim() ).join('-')
+        const sanitizedState = state.toLowerCase().trim() 
+        return [sanitizedBreed, sanitizedState, sanitizedCity, ]
     }
 
     render() {
         console.log(this.props.breeds)
         return(
             <div className="landing-page-search-bar">
-                <p> Search by: </p> 
-                <button>Breed</button>
-                <button>Location</button>
-                <form onSubmit={ (event) => this.handleSubmit(event) }>
-                    <label>Breed:</label>
-                    <input type="text" onChange={ (e) => this.handleBreedChange(e) } /> 
 
-                    <select>
-                        <option>Any</option>
-                    </select>
-                    
+                <form onSubmit={ (event) => this.handleSubmit(event) }>
+                    {/* <label>Breed:</label>
+                    <input type="text" onChange={ (e) => this.handleBreedChange(e) } />  */}
+                    <input type='text' list='breeds' onChange={ (e) => this.handleBreedChange(e) }/>
+                    <datalist id='breeds'>
+                        <option value="Any Breed"/>
+                        {this.props.breeds.map( breed => <option value={breed} /> )}
+                    </datalist>
+
                     <GooglePlacesAutocomplete 
                         apiKey="AIzaSyAogTqS8y_uMthvPq5C16K8RRLqLKqG5sE" 
                         autocompletionRequest={{
