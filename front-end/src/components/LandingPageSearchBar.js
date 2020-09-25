@@ -16,11 +16,11 @@ class LandingPageSearchBar extends Component {
         })
     }
 
-    handleLocationChange = (event) => {
-        this.setState({
-            location: event.target.value
-        })
-    }
+    // handleLocationChange = (event) => {
+    //     this.setState({
+    //         location: event.target.value
+    //     })
+    // }
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -31,7 +31,7 @@ class LandingPageSearchBar extends Component {
     }
 
     render() {
-        
+        console.log(this.props.breeds)
         return(
             <div className="landing-page-search-bar">
                 <p> Search by: </p> 
@@ -40,6 +40,10 @@ class LandingPageSearchBar extends Component {
                 <form onSubmit={ (event) => this.handleSubmit(event) }>
                     <label>Breed:</label>
                     <input type="text" onChange={ (e) => this.handleBreedChange(e)} /> 
+
+                    <select>
+                        <option>Any</option>
+                    </select>
                     <GooglePlacesAutocomplete 
                         apiKey="AIzaSyAogTqS8y_uMthvPq5C16K8RRLqLKqG5sE" 
                         autocompletionRequest={{
@@ -48,6 +52,8 @@ class LandingPageSearchBar extends Component {
                             }
                         }}  
                     />
+
+
                     {/* <label>Enter location: </label>
                     <input type='text' onChange={ (e) => this.handleLocationChange(e) } /> */}
                     <input type='submit' value='Go'/>
