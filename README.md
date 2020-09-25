@@ -23,9 +23,16 @@ Landing Page
 [X] Seperate and set timer on access token fetch call 
 
 [X] Set up pagination on index page 
-    [] Set up paginated links
+    [X] Set up paginated links
 
-[] Create suggestive search bar 
+[X] Create suggestive search bar for location 
+
+[] Create suggestive search bar for breeds 
+    [] 
+
+[] Abstract petActions methods into smaller methods 
+
+[] Clearly define all the routes and how I will implement those routes 
 
 
 
