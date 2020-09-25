@@ -39,11 +39,12 @@ class LandingPageSearchBar extends Component {
                 <button>Location</button>
                 <form onSubmit={ (event) => this.handleSubmit(event) }>
                     <label>Breed:</label>
-                    <input type="text" onChange={ (e) => this.handleBreedChange(e)} /> 
+                    <input type="text" onChange={ (e) => this.handleBreedChange(e) } /> 
 
                     <select>
                         <option>Any</option>
                     </select>
+                    
                     <GooglePlacesAutocomplete 
                         apiKey="AIzaSyAogTqS8y_uMthvPq5C16K8RRLqLKqG5sE" 
                         autocompletionRequest={{
