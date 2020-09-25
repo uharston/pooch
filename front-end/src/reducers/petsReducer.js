@@ -1,24 +1,16 @@
-// import { combineReducers } from 'redux';
-
-// const rootReducer = combineReducers({
-//     pets: petsReducer
-// })
-
-// export default rootReducer; 
 
 const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [] }, action ) => {
    
     switch(action.type) {
      
         case 'ADD_BREEDS': 
-       
          const sanitizedBreeds = action.breeds.map( e => e.name )
             return {
                 ...state, 
                 breeds: sanitizedBreeds
             }
-        case 'ADD_API_TOKEN':
-            
+
+        case 'ADD_API_TOKEN': 
             return {
                 ...state, 
                 api_token: { 
@@ -34,6 +26,7 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds:
                 pets: [ ...state.pets ], 
                 loading: true
             }
+
         case 'ADD_PETS': 
             return {
                 ...state, 

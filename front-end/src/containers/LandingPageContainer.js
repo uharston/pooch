@@ -29,4 +29,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchBreeds }) (LandingPageContainer)
+export default connect(mapStateToProps, { fetchBreeds } ) (LandingPageContainer)

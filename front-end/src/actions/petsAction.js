@@ -4,7 +4,6 @@ export const fetchBreeds = () => {
         .then(response => response.json())
         .then(breeds => dispatch({ type: 'ADD_BREEDS', breeds}))
     }
-
 }
 
 export const fetchPets = function(param) {
@@ -16,6 +15,7 @@ export const fetchPets = function(param) {
         if( !getState().api_token.token || getState().api_token.expires - new Date().getTime() < 1 ) {
 
             fetch("https://api.petfinder.com/v2/oauth2/token", {
+                //abstract client secret and ID 
                 body: "grant_type=client_credentials&client_id=70TgEtMrkn14Jh5jt2TjSW2VCMDoVLwXPWF7VxfXMhFQ2SfJus&client_secret=L8OzS0UL8pwnrYwFtuDiADZ4sBSr3HOlIK5SkjK3",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
