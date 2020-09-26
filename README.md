@@ -29,11 +29,9 @@ Landing Page
 
 [X] Create suggestive search bar for breeds 
 
+[X] Connect back end to git hub
+
 [] Clearly define all the routes and how I will implement those routes 
-
-[]
-
-[] Connect back end to git hub
 
 [] Post request to back-end 
     [] Get back-end working 

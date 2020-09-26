@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+// import logo from '../logo-black.svg';
+
 
 class NavBar extends Component {
     render() {
         return(
             <div className='navbar'>
-                <NavLink to='/'>Home</NavLink>
-                <NavLink to='/search'>Search</NavLink>
-                Pooch Logo Left - Sign Up Right - Log In Right
+                {/* <img style={{width: '20px'}} src={logo} /> */}
+                {/* <NavLink to='/'>Home</NavLink>
+                <NavLink to='#'>Log In</NavLink> */}
+                <form>
+                    <input type='submit' value='Log In' />
+                </form>
             </div>
         )
     }

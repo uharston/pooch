@@ -17,6 +17,7 @@ function App() {
         <NavBar />
         <Route exact path="/" component={ LandingPageContainer } />
         <Route path='/search/:breed/:state/:city/:page' render={ routerProps => <PetsContainer {...routerProps} /> } />
+        
       </div>
     </Router>
 

@@ -55,7 +55,7 @@ class LandingPageSearchBar extends Component {
                     </datalist>
 
                     <GooglePlacesAutocomplete 
-                        apiKey="AIzaSyAogTqS8y_uMthvPq5C16K8RRLqLKqG5sE" 
+                        apiKey="AIzaSyBGuIQVT1Wl7jkaCGgiNrnn0Cp9ihHgr74" 
                         autocompletionRequest={{
                             componentRestrictions: {
                                 country: ['us', 'ca']
