@@ -1,7 +1,18 @@
 
-const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [] }, action ) => {
-   
+const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [], user: {} }, action ) => {
+    debugger
     switch(action.type) {
+
+        case 'LOGIN_USER': 
+            return {
+                ...state, 
+                user: action.data
+            }
+        case 'LOGIN_ERROR': 
+            return {
+                ...state, 
+                user: action.data 
+            }
      
         case 'ADD_BREEDS': 
          const sanitizedBreeds = action.breeds.map( e => e.name )
