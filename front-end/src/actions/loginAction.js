@@ -1,0 +1,17 @@
+import  axios  from 'axios'; 
+
+export const fetchLogin = (response) => {
+    return (dispatch) => {
+        
+        axios.post('http://localhost:4000/login', response, {withCredentials: true})
+        .then(response => {
+            
+            if(response.data.logged_in) {
+               dispatch({type: "LOGIN_USER", response})
+            }
+            else {
+               dispatch({type: "LOGIN_ERROR", response})
+            }
+        })
+    }
+}
