@@ -1,38 +1,38 @@
-import React from 'react' 
-import { GoogleLogin } from 'react-google-login';
-import { axios } from 'axios'; 
-// import { refreshTokenSetup } from '../utils/refreshToken'; 
-const clientId = '948600984023-pdgk9pe9roiei64t8flvdam435sfiss9.apps.googleusercontent.com';
+import React, { Component } from 'react'; 
 
-function LoginBtn() {
-    const onSuccess = (response) => {
-        
+import { connect } from 'react-redux'; 
+import { GoogleLogin } from 'react-google-login';
+import { fetchLogin } from '../actions/loginAction';
+
+// import { refreshTokenSetup } from '../utils/refreshToken'; 
+
+class LoginBtn extends Component {
+
+    onSuccess = (response) => {
+        this.props.fetchLogin(response)
         console.log('[Login Success] currentUser:', response );
-        //send username: email, password: googleId as a post request to rails api 
-        //axios withCredentials 
-        //find or create user
-        //on front end use reponse to set store data for that user
-        //set Session? I forgot how to implement that
-        // refreshTokenSetup(response)
     }
 
-    const onFailure = (response) => {
+    onFailure = (response) => {
         console.log('[Login Failure] response:', response)
     }
 
-    return(
-        <div className='login-btn'>
-            <GoogleLogin
-                clientId={clientId}
-                buttonText="Login"
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-                cookiePolicy={'single_host_origin'}
-                style={{marginTop: '100px'}}
-                isSignedIn={true}
-            />
-        </div>
-    )
+    render = () => {
+        return(
+            <div className='login-btn'>
+                <GoogleLogin
+                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                    buttonText="Login"
+                    onSuccess={this.onSuccess}
+                    onFailure={this.onFailure}
+                    cookiePolicy={'single_host_origin'}
+                    style={{marginTop: '100px'}}
+                    isSignedIn={true}
+                />
+            </div>
+        )
+        }
 }
 
-export default LoginBtn; 
+export default connect( null, { fetchLogin } ) (LoginBtn); 
+
