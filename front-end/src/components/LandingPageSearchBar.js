@@ -42,7 +42,7 @@ class LandingPageSearchBar extends Component {
         return(
             <div className="landing-page-search-bar">
 
-                <Form inline onSubmit={ (event) => this.handleSubmit(event) }>
+                <Form inline className='justify-content-center' onSubmit={ (event) => this.handleSubmit(event) }>
                     <FormControl  type='text' list='breeds' placeholder="Enter A Breed" onChange={ (e) => this.handleBreedChange(e) } />
                     <datalist id='breeds'>
                         <option value="Any Breed"/>
