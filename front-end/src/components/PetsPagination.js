@@ -35,7 +35,7 @@ class PetsPagination extends Component {
         if(this.props.pagination) {
             return (
                 <div className='pets-pagination'>
-                    <Pagination>
+                    <Pagination size='lg' className='justify-content-center'>
                         <Pagination.First onClick={() => this.handleClick('first')}/>
                         { this.props.pagination.current_page !== 1 ? <Pagination.Prev onClick={() => this.handleClick('previous')}/> : null }
                         <Pagination.Item active >{this.props.pagination.current_page}</Pagination.Item>
