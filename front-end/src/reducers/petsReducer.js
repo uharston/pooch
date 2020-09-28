@@ -1,17 +1,24 @@
 
-const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [], user: {} }, action ) => {
-    debugger
+const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [], user: { logged_in: false } }, action ) => {
+    
     switch(action.type) {
-
+        
         case 'LOGIN_USER': 
-            return {
-                ...state, 
-                user: action.data
-            }
+        return {
+            ...state, 
+            user: action.response.data
+        }
         case 'LOGIN_ERROR': 
-            return {
+        
+        return {
+            ...state, 
+            user: action.response.data 
+        }
+        case 'LOGOUT_USER': 
+        
+            return{ 
                 ...state, 
-                user: action.data 
+                user: {logged_in: action.logged_in}
             }
      
         case 'ADD_BREEDS': 
