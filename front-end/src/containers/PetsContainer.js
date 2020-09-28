@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPets } from '../actions/petsAction';
-
-import PetsPagination from '../components/PetsPagination'
+import PetsPagination from '../components/PetsPagination';
+import Pets from '../components/Pets';
 
 
 
@@ -15,24 +15,12 @@ class PetsContainer extends Component {
         this.props.fetchPets( url )
     }
 
-    renderPhoto = (pet) => {
-        return pet.primary_photo_cropped ? <img src={pet.primary_photo_cropped.small} /> : <p> NO PHOTO FOUND </p>
-    }
-
-    // renderPagination = (pagination) => {
-    //     return pagination ? <h3>{this.props.pagination.current_page} of {this.props.pagination.total_pages}</h3> : null 
-    // }
-
     render() {
         return(
             <div className='search-container'>
-                {/* <Route path={`${this.props.match.url}/:state/:city`} render{ routerProps => } */}
                 <h1>Search</h1>
                 <PetsPagination pagination={this.props.pagination} fetchPets={this.props.fetchPets} /> 
-                {/* { this.renderPagination(this.props.pagination) } */}
-                <ul>
-                    { this.props.pets.map( pet => <li>{pet.name} {this.renderPhoto(pet)}</li> ) }
-                </ul>
+                <Pets pets={this.props.pets} />
             </div>
         )
     }
