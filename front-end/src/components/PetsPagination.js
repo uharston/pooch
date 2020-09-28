@@ -37,16 +37,11 @@ class PetsPagination extends Component {
                 <div className='pets-pagination'>
                     <Pagination>
                         <Pagination.First onClick={() => this.handleClick('first')}/>
-                        <Pagination.Prev onClick={() => this.handleClick('previous')}/>
+                        { this.props.pagination.current_page !== 1 ? <Pagination.Prev onClick={() => this.handleClick('previous')}/> : null }
                         <Pagination.Item active >{this.props.pagination.current_page}</Pagination.Item>
-                        <Pagination.Next onClick={() => this.handleClick('next')} />
-                        <Pagination.Last onClick={() => this.handleClick('last')} />
+                        {this.props.pagination.current_page === this.props.pagination.total_pages - 1 || this.props.pagination.current_page === this.props.pagination.total_pages ? null : <Pagination.Next onClick={() => this.handleClick('next')} />}
+                        {this.props.pagination.current_page === this.props.pagination.total_pages ? null : <Pagination.Last onClick={() => this.handleClick('last')} />}
                     </Pagination>
-
-
-
-                    <h3>{this.props.pagination.current_page} of {this.props.pagination.total_pages}</h3>
-                    <button onClick={() => this.handleClick()}>Next Page</button>
                 </div>
             )
         }
