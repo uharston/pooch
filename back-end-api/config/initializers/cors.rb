@@ -15,9 +15,23 @@
 #   end
 # end
 
-Rails.application.config.middleware.insert_before 0, Rack::Cors do
+# Rails.application.config.middleware.insert_before 0, Rack::Cors do
+#     allow do
+#       origins '*'
+#       resource '*', headers: :any, methods: [:get, :post, :patch, :put]
+#     end
+#   end
+  Rails.application.config.middleware.insert_before 0, Rack::Cors do 
     allow do
-      origins '*'
-      resource '*', headers: :any, methods: [:get, :post, :patch, :put]
+      origins 'http://localhost:3000'
+    
+      resource '*',
+        headers: :any,
+        methods: [:get, :post, :put, :patch, :delete, :options, :head],
+        credentials: true
     end
   end
+
+# The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' 
+# when the request's credentials mode is 'include'. The credentials mode of requests initiated by the 
+# XMLHttpRequest is controlled by the withCredentials attribute.
