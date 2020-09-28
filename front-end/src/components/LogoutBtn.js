@@ -12,13 +12,13 @@ class LogoutBtn extends Component {
 
     render() {
         return(
-            <div className='logout-btn'>
+            <span className='logout-btn'>
                 <GoogleLogout
                     clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                     buttonText="Logout"
                     onLogoutSuccess={this.onSuccess}
                 />
-            </div>
+            </span>
         )
     }
 }

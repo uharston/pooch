@@ -19,7 +19,7 @@ class LoginBtn extends Component {
 
     render = () => {
         return(
-            <div className='login-btn'>
+            <span className='login-btn'>
                 <GoogleLogin
                     clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                     buttonText="Login"
@@ -29,7 +29,7 @@ class LoginBtn extends Component {
                     style={{marginTop: '100px'}}
                     isSignedIn={true}
                 />
-            </div>
+            </span>
         )
         }
 }
