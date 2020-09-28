@@ -3,13 +3,10 @@ class User < ApplicationRecord
 
     def self.create_from_omniauth(auth) 
          
-        User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
-            u.username = auth['info']['email']
-            # u.first_name = auth['info']['first_name']
-            # u.last_name = auth['info']['last_name']
-            # u.email = auth['info']['email']
-            # u.image_href = auth['info']['image']
-            # u.avatar.attach(auth['info']['image'])
+        User.find_or_create_by(uid: auth['googleId']) do |u|
+            u.name = auth['name']
+            u.email = auth['email']
+            u.image_url = auth['imageUrl']
             u.password = SecureRandom.hex(16)
         end 
        
