@@ -18,9 +18,8 @@ class PetsContainer extends Component {
     render() {
         return(
             <div className='search-container'>
-                <h1>Search</h1>
-                <PetsPagination pagination={this.props.pagination} fetchPets={this.props.fetchPets} /> 
                 <Pets pets={this.props.pets} />
+                <PetsPagination pagination={this.props.pagination} fetchPets={this.props.fetchPets} /> 
             </div>
         )
     }
