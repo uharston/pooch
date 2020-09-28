@@ -16,8 +16,14 @@ class LandingPageContainer extends Component {
     render() {
         return(
             <div className='landing-page-container'>
-                <LandingPageLogo /> 
-                <LandingPageSearchBar breeds={this.props.breeds} />
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 text-center">
+                            <LandingPageLogo /> 
+                            <LandingPageSearchBar breeds={this.props.breeds} />
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
