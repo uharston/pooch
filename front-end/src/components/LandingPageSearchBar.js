@@ -55,7 +55,7 @@ class LandingPageSearchBar extends Component {
                     </datalist>
 
                     <GooglePlacesAutocomplete 
-                        apiKey="AIzaSyBGuIQVT1Wl7jkaCGgiNrnn0Cp9ihHgr74" 
+                        apiKey={process.env.REACT_APP_GOOGLE_PLACES_API_KEY} 
                         autocompletionRequest={{
                             componentRestrictions: {
                                 country: ['us', 'ca']
