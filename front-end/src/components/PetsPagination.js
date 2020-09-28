@@ -40,7 +40,7 @@ class PetsPagination extends Component {
                         { this.props.pagination.current_page !== 1 ? <Pagination.Prev onClick={() => this.handleClick('previous')}/> : null }
                         <Pagination.Item active >{this.props.pagination.current_page}</Pagination.Item>
                         {this.props.pagination.current_page === this.props.pagination.total_pages - 1 || this.props.pagination.current_page === this.props.pagination.total_pages ? null : <Pagination.Next onClick={() => this.handleClick('next')} />}
-                        {this.props.pagination.current_page === this.props.pagination.total_pages ? null : <Pagination.Last onClick={() => this.handleClick('last')} />}
+                        {this.props.pagination.current_page === this.props.pagination.total_pages ? <Pagination.Last disabled onClick={() => this.handleClick('last')} /> : <Pagination.Last onClick={() => this.handleClick('last')} />}
                     </Pagination>
                 </div>
             )
