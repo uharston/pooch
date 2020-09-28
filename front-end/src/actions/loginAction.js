@@ -15,3 +15,9 @@ export const fetchLogin = (response) => {
         })
     }
 }
+
+export const fetchLogout = () => {
+    return (dispatch) => {
+        dispatch({ type: "LOGOUT_USER", logged_in: false })
+    }
+}
