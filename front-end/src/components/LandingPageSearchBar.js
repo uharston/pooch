@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Select from 'react-select'
 import { Form, FormControl, Button } from 'react-bootstrap'; 
 import { withRouter } from 'react-router-dom'; 
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
@@ -21,7 +20,7 @@ class LandingPageSearchBar extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         debugger
-        const place = event.target.getElementsByClassName(' css-tt72xr-singleValue')[0].textContent
+        const place = event.target.getElementsByClassName(' css-15vawbg-singleValue')[0].textContent
         const [breed, state, city] = this.sanitizeRouteParams(place) 
         let route = `${breed}/${state}/${city}`
         this.props.history.push(`search/${route}/&page=1`)
@@ -43,7 +42,7 @@ class LandingPageSearchBar extends Component {
             <div className="landing-page-search-bar">
 
                 <Form inline className='justify-content-center' onSubmit={ (event) => this.handleSubmit(event) }>
-                    <FormControl  type='text' list='breeds' placeholder="Enter A Breed" onChange={ (e) => this.handleBreedChange(e) } />
+                    <FormControl  type='text' list='breeds' placeholder="Enter A Breed" class='dropdown' onChange={ (e) => this.handleBreedChange(e) } />
                     <datalist id='breeds'>
                         <option value="Any Breed"/>
                         {this.props.breeds.map( breed => <option value={breed} /> )}
@@ -56,14 +55,12 @@ class LandingPageSearchBar extends Component {
                             }
                         }}
                         selectProps={{
+                            placeholder: "Enter Location...",
                             styles: {
-                                className: (provided) => ({
-                                    ...provided,
-                                    class: 'form-control'
-                                }),
                                 input: (provided) => ({
                                   ...provided,
                                   color: 'black',
+                                  width: 200
                                 }),
                                 option: (provided) => ({
                                   ...provided,
@@ -72,6 +69,7 @@ class LandingPageSearchBar extends Component {
                                 singleValue: (provided) => ({
                                   ...provided,
                                   color: 'blue',
+                                  width: 200
                                 }),
                               },
                         }}
@@ -88,14 +86,14 @@ class LandingPageSearchBar extends Component {
                         {this.props.breeds.map( breed => <option value={breed} /> )}
                     </datalist>
 
-                    <GooglePlacesAutocomplete 
-                        apiKey={process.env.REACT_APP_GOOGLE_PLACES_API_KEY} 
-                        autocompletionRequest={{
-                            componentRestrictions: {
-                                country: ['us', 'ca']
-                            }
-                        }}  
-                    />
+<GooglePlacesAutocomplete 
+    apiKey={process.env.REACT_APP_GOOGLE_PLACES_API_KEY} 
+    autocompletionRequest={{
+        componentRestrictions: {
+            country: ['us', 'ca']
+        }
+    }}  
+/>
 
 
                     {/* <label>Enter location: </label>
