@@ -1,6 +1,5 @@
 
-const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [], user: { logged_in: false, favorites: [] } }, action ) => {
-    
+const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [], user: { name: '', email: '', image_url: '', logged_in: false, favorites: [] } }, action ) => {
     switch(action.type) {
 
         case 'ADD_FAVORITE_PET':
@@ -12,16 +11,22 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds:
             }
         
         case 'LOGIN_USER': 
-        return {
-            ...state, 
-            user: action.response.data
-        }
+            return {
+                ...state, 
+                user: {
+                    name: action.response.data.name,
+                    email: action.response.data.email,
+                    image_url: action.response.data.image_url,
+                    logged_in: true,
+                    favorites: action.response.data.pets
+                }
+            }
         case 'LOGIN_ERROR': 
         
-        return {
-            ...state, 
-            user: action.response.data 
-        }
+            return {
+                ...state, 
+                user: action.response.data 
+            }
         case 'LOGOUT_USER': 
         
             return{ 
@@ -30,7 +35,7 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds:
             }
      
         case 'ADD_BREEDS': 
-         const sanitizedBreeds = action.breeds.map( e => e.name )
+            const sanitizedBreeds = action.breeds.map( e => e.name )
             return {
                 ...state, 
                 breeds: sanitizedBreeds
