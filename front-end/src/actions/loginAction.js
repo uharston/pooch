@@ -6,7 +6,7 @@ export const fetchLogin = (response) => {
         axios.post('http://localhost:4000/login', response, {withCredentials: true})
         .then(response => {
             
-            if(response.data.logged_in) {
+            if(!response.data.error) {
                dispatch({type: "LOGIN_USER", response})
             }
             else {
