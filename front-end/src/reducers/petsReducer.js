@@ -1,13 +1,25 @@
 
-const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [], user: { name: '', email: '', image_url: '', logged_in: false, favorites: [] } }, action ) => {
+const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [], user: { name: '', email: '', image_url: '', logged_in: false, favorite_ids: [], favorite_pets: [] } }, action ) => {
+    
     switch(action.type) {
 
-        case 'ADD_FAVORITE_PET':
-            
-            let newFavoriteList = state.user.favorites.push(action.response.data.pet_id)
+        case "RETRIEVE_FAVORITES": 
+            let updatedFavoriteList = state.user.favorite_pets
+            updatedFavoriteList.push(action.pets.animal)
             return {
                 ...state, 
-                user: { favorites: newFavoriteList }
+                user: { ...state.user, 
+                    favorite_pets: updatedFavoriteList
+                }
+            }
+            
+        
+        case 'ADD_FAVORITE_PET':
+            
+            let updatedFavoriteIds = state.user.favorite_ids.push(action.response.data.pet_id)
+            return {
+                ...state, 
+                user: { favorites: updatedFavoriteIds }
             }
         
         case 'LOGIN_USER': 
@@ -18,7 +30,8 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds:
                     email: action.response.data.email,
                     image_url: action.response.data.image_url,
                     logged_in: true,
-                    favorites: action.response.data.pets
+                    favorite_ids: action.response.data.pets,
+                    favorite_pets: []
                 }
             }
         case 'LOGIN_ERROR': 
@@ -54,7 +67,7 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds:
         case 'LOADING_PETS': 
             return { 
                 ...state, 
-                pets: [ ...state.pets ], 
+                // pets: [ ...state.pets ], 
                 loading: true
             }
 
