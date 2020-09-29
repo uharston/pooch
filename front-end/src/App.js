@@ -8,7 +8,8 @@ import {
 } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import LandingPageContainer from './containers/LandingPageContainer';
-import PetsContainer from './containers/PetsContainer'
+import PetsContainer from './containers/PetsContainer';
+import FavoritesContainer from './containers/FavoritesContainer';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Navigation />
         <Route exact path="/" component={ LandingPageContainer } />
         <Route path='/search/:breed/:state/:city/:page' render={ routerProps => <PetsContainer {...routerProps} /> } />
+        <Route exact path='/user/favorites' component= { FavoritesContainer } /> 
       </div>
     </Router>
 
