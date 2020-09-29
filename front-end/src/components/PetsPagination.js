@@ -28,6 +28,8 @@ class PetsPagination extends Component {
                 return 1 
             case 'last': 
                 return this.props.pagination.total_pages
+            default: 
+                return null 
         }
     }
 
