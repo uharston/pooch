@@ -17,7 +17,7 @@ class LogoutBtn extends Component {
         return(
             <span className='logout-btn'>
                 <NavDropdown id='nav-dropdown' title={<Image className='profile-img' src={this.props.user.image_url} roundedCircle />}>
-                        <NavDropdown.Item href='#'>Favorites</NavDropdown.Item>
+                        <NavDropdown.Item href='/user/favorites'>Favorites</NavDropdown.Item>
                         <NavDropdown.Item >
                         <GoogleLogout
                             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
