@@ -1,56 +1,71 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
-import {Card, Col, Button } from 'react-bootstrap'; 
+import dogLogo from '../dog_logo.png'
+import { postFavoritePet } from '../actions/favoritesAction'
+import {Card,  Button, Carousel } from 'react-bootstrap'; 
 
 
 class Pet extends Component {
 
+    // [index, setIndex] = useState(0);
+
+    handleSelect = (selectedIndex, e) => {
+    //   setIndex(selectedIndex);
+    };
+
     renderPhoto = (pet) => {
-        return pet.primary_photo_cropped ? <Card.Img variant="top" className='card-img' src={pet.primary_photo_cropped.small} /> : <p> NO PHOTO FOUND </p>
+        debugger
+        return pet ? <Card.Img variant="top" className='card-img' src={pet} /> : <Card.Img variant="top" className='card-img' src={dogLogo} />
     }
 
-    renderBody = (pet) => {
-        return (
-            <Card.Body>
-                <Card.Title>{pet.name}</Card.Title>
-                    <Card.Text>
-                        {pet.age} {pet.breeds.mixed ? pet.breeds.primary + ' Mix' : pet.breeds.primary }
-                    </Card.Text>
-                    <Button variant="danger" onClick={ () => this.handleSaveClick() }>Save</Button>
-                    <Button variant="primary" onClick={ () => this.handleMoreInfoClick() }>More Info...</Button>
-            </Card.Body>
 
-        )
+    handleSaveClick = () => {
+        if(this.props.user.logged_in) {
+            debugger
+            this.props.postFavoritePet(this.props.pet)
+        }
+        else {
+            alert("Please Log In First")
+        }
     }
 
-    // handleSaveClick = () => {
-
-    //     if(this.props.user) {
-
-    //     }
-    //     else {
-    //         alert("Please Log In First")
-    //     }
-    // }
+    renderCarousel = () => {
+        if (!this.props.pet.primary_photo_cropped) {
+            return <Card.Img variant="top" className='card-img' src={dogLogo} />
+        }
+        else {
+            return this.props.pet.photos.map( photo =>
+                <Carousel.Item><Card.Img variant="top" className='card-img' src={photo.medium} /> </Carousel.Item>)
+            
+        }
+            
+    }
+    
 
     render() {
+        debugger
         return(
-            <div className='pet'>
-                <Col >
-                    <Card>
-                        {this.renderPhoto(this.props.pet)}
-                        {this.renderBody(this.props.pet)}
-                    </Card>
-                </Col>
-            </div>
+            <Card>
+                <Carousel onSelect={this.handleSelect} interval={null}>
+                    {this.renderCarousel()}
+                </Carousel>
+                <Card.Body>
+                    <Card.Title>{this.props.pet.name}</Card.Title>
+                        <Card.Text>
+                            {this.props.pet.age} {this.props.pet.breeds.mixed ? this.props.pet.breeds.primary + ' Mix' : this.props.pet.breeds.primary }
+                        </Card.Text>
+                        <Button variant="danger" onClick={ () => this.handleSaveClick() }>Save</Button>
+                        <Button variant="primary" onClick={ () => this.props.handleFlip() }>More Info...</Button>
+                </Card.Body>
+            </Card>
         )
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         user: state.user 
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        user: state.user 
+    }
+}
 
-// export default connect(mapStateToProps) (Pet) 
+export default connect(mapStateToProps, { postFavoritePet }) (Pet) 
