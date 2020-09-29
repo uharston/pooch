@@ -7,17 +7,9 @@ import {Card,  Button, Carousel } from 'react-bootstrap';
 
 class Pet extends Component {
 
-    // [index, setIndex] = useState(0);
-
-    handleSelect = (selectedIndex, e) => {
-    //   setIndex(selectedIndex);
-    };
-
     renderPhoto = (pet) => {
-        debugger
         return pet ? <Card.Img variant="top" className='card-img' src={pet} /> : <Card.Img variant="top" className='card-img' src={dogLogo} />
     }
-
 
     handleSaveClick = () => {
         if(this.props.user.logged_in) {
@@ -35,18 +27,17 @@ class Pet extends Component {
         }
         else {
             return this.props.pet.photos.map( photo =>
-                <Carousel.Item><Card.Img variant="top" className='card-img' src={photo.medium} /> </Carousel.Item>)
-            
+                <Carousel.Item><Card.Img variant="top" className='card-img' src={photo.medium} /> </Carousel.Item>
+            )
         }
             
     }
     
-
     render() {
-        debugger
+        
         return(
             <Card>
-                <Carousel onSelect={this.handleSelect} interval={null}>
+                <Carousel onSelect={this.handleSelect} interval={null} indicators={this.props.pet.photos.length > 1 ? true : false } controls={this.props.pet.photos.length > 1 ? true : false }>
                     {this.renderCarousel()}
                 </Carousel>
                 <Card.Body>
@@ -68,4 +59,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { postFavoritePet }) (Pet) 
+export default connect(mapStateToProps, { postFavoritePet } ) (Pet) 
