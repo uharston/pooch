@@ -1,4 +1,16 @@
-
+.container  .like-btn{
+  position: absolute;
+  top: 10%;
+  left: 88%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: transparent;
+  color: white;
+  font-size: 30px;
+  border: none;
+  outline:none;
+  text-align: center;
+}
 .navigation-logo {
   height: 4vmin;
 }
@@ -12,7 +24,12 @@
 .profile-img {
   width: 40%;
 }
-
+.card-back {
+  background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .landing-page-container {
   height: 100vh;
   min-height: 500px;
@@ -29,6 +46,7 @@
 .App-logo {
   height: 10vmin;
   pointer-events: none;
+  margin-bottom: 30px;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
