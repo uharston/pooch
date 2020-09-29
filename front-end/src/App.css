@@ -1,6 +1,16 @@
 
 .navigation-logo {
-  height: 3vmin;
+  height: 4vmin;
+}
+
+.card-img {
+  width: 250vw; /* You can set the dimensions to whatever you want */
+  height: 50vh;
+  object-fit: cover;
+}
+
+.profile-img {
+  width: 40%;
 }
 
 .landing-page-container {
