@@ -8,13 +8,20 @@ import * as Icon from 'react-bootstrap-icons';
 
 class Pet extends Component {
 
+    state = {
+        liked: false
+    }
+
     renderPhoto = (pet) => {
         return pet ? <Card.Img variant="top" className='card-img' src={pet} /> : <Card.Img variant="top" className='card-img' src={dogLogo} />
     }
 
     handleSaveClick = () => {
         if(this.props.user.logged_in) {
-            debugger
+            
+            this.setState( prevState => ({
+                liked: !prevState.liked
+            }))
             this.props.postFavoritePet(this.props.pet)
         }
         else {
@@ -30,7 +37,7 @@ class Pet extends Component {
             return this.props.pet.photos.map( photo =>
                 <Carousel.Item>
                     <Card.Img variant="top" className='card-img' src={photo.medium} /> 
-                    <button class='like-btn'><Icon.Heart /></button>
+                    <button class='like-btn' onClick={ () => this.handleSaveClick() } >{this.state.liked ? <Icon.HeartFill/> : <Icon.Heart /> }</button>
                 </Carousel.Item>
             )
         }
@@ -49,7 +56,7 @@ class Pet extends Component {
                         <Card.Text>
                             {this.props.pet.age} {this.props.pet.breeds.mixed ? this.props.pet.breeds.primary + ' Mix' : this.props.pet.breeds.primary }
                         </Card.Text>
-                        <Button variant="danger" onClick={ () => this.handleSaveClick() }>Save</Button>
+                        {/* <Button variant="danger" onClick={ () => this.handleSaveClick() }>Save</Button> */}
                         <Button variant="primary" onClick={ () => this.props.handleFlip() }>More Info...</Button>
                 </Card.Body>
             </Card>
