@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
+    has_many :pets 
 
     def self.create_from_omniauth(auth) 
          
