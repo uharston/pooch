@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import dogLogo from '../dog_logo.png'
 import { postFavoritePet } from '../actions/favoritesAction'
 import {Card,  Button, Carousel } from 'react-bootstrap'; 
+import * as Icon from 'react-bootstrap-icons';
 
 
 class Pet extends Component {
@@ -27,7 +28,10 @@ class Pet extends Component {
         }
         else {
             return this.props.pet.photos.map( photo =>
-                <Carousel.Item><Card.Img variant="top" className='card-img' src={photo.medium} /> </Carousel.Item>
+                <Carousel.Item>
+                    <Card.Img variant="top" className='card-img' src={photo.medium} /> 
+                    <button class='like-btn'><Icon.Heart /></button>
+                </Carousel.Item>
             )
         }
             
