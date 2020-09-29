@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux'; 
-import { Image, Dropdown } from 'react-bootstrap';
+import { Image, NavDropdown } from 'react-bootstrap';
 
 import { GoogleLogout } from 'react-google-login';
 import { fetchLogout } from '../actions/loginAction';
@@ -16,21 +16,22 @@ class LogoutBtn extends Component {
         
         return(
             <span className='logout-btn'>
-                <Dropdown>
-                    <Dropdown.Toggle>
-                        <Image className='profile-img' src={this.props.user.image_url} roundedCircle />
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item href='#'>Favorites</Dropdown.Item>
-                        <Dropdown.Item >
+                <NavDropdown id='nav-dropdown' title={<Image className='profile-img' src={this.props.user.image_url} roundedCircle />}>
+                        <NavDropdown.Item href='#'>Favorites</NavDropdown.Item>
+                        <NavDropdown.Item >
                         <GoogleLogout
                             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                             buttonText="Logout"
                             onLogoutSuccess={this.onSuccess}
+                            className="dropdown-item"
+                            tag='a'
+                            type='a'
+                            icon={false}
+                            disabledStyle={{}}
+                            // disabledStyle='true'
                         />
-                        </Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+                        </NavDropdown.Item>
+                </NavDropdown>
             </span>
         )
     }
