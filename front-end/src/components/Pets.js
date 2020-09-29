@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
-import {Container, Row, Card, Col, Button } from 'react-bootstrap'; 
-import Pet from './Pet';
+import {Container, Row, Col } from 'react-bootstrap'; 
+import PetCard from './PetCard'
 
 class Pets extends Component {
 
@@ -8,10 +8,14 @@ class Pets extends Component {
         return(
             <div className='pets'>
                 <Container>
-                    <Row xs={1} md={3} lg={3} >   
-                        { this.props.pets.map( pet => <Pet pet={pet}/> ) }
+                    <Row xs={1} md={3} lg={3} > 
+                        { this.props.pets.map( pet => 
+                            <Col>
+                                <PetCard pet={pet} />
+                            </Col> 
+                        ) }
                     </Row>
-                </Container>
+                </Container>   
             </div>
         )
     }
