@@ -1,8 +1,6 @@
 import React, { Component } from 'react'; 
-
 import { connect } from 'react-redux'; 
 import { fetchBreeds } from '../actions/petsAction';
-
 import LandingPageLogo from '../components/LandingPageLogo'
 import LandingPageSearchBar from '../components/LandingPageSearchBar'
 
@@ -14,6 +12,7 @@ class LandingPageContainer extends Component {
     }
 
     render() {
+        
         return(
             <div className='landing-page-container'>
                 <div class="container h-100">
@@ -31,7 +30,8 @@ class LandingPageContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        breeds: state.breeds 
+        breeds: state.breeds, 
+        user: state.user
     }
 }
 
