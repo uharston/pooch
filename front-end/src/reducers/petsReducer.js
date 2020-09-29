@@ -1,7 +1,15 @@
 
-const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [], user: { logged_in: false } }, action ) => {
+const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds: [], user: { logged_in: false, favorites: [] } }, action ) => {
     
     switch(action.type) {
+
+        case 'ADD_FAVORITE_PET':
+            
+            let newFavoriteList = state.user.favorites.push(action.response.data.pet_id)
+            return {
+                ...state, 
+                user: { favorites: newFavoriteList }
+            }
         
         case 'LOGIN_USER': 
         return {
