@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
 
-class FavoritesContainer export Component {
+class FavoritesContainer extends Component {
     
     render() {
         return(
