@@ -40,7 +40,6 @@ class PetCardBack extends Component {
 
 
                             </Card.Text>
-                            <Button variant="danger" onClick={ () => this.handleSaveClick() }>Save</Button>
                             <Button variant="primary" onClick={ () => this.props.handleFlip() }>Back</Button>
                             <Card.Text>
                                 <small className='text-muted'>Last Updated: {this.props.pet.status_changed_at}</small>
