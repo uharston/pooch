@@ -18,10 +18,10 @@ class Pet extends Component {
 
     handleSaveClick = () => {
         if(this.props.user.logged_in) {
-            
             this.setState( prevState => ({
                 liked: !prevState.liked
             }))
+            // this.props.dispatch({type: })
             this.props.postFavoritePet(this.props.pet)
         }
         else {
@@ -31,7 +31,10 @@ class Pet extends Component {
 
     renderCarousel = () => {
         if (!this.props.pet.primary_photo_cropped) {
-            return <Card.Img variant="top" className='card-img' src={dogLogo} />
+            return  <Carousel.Item>
+                        <Card.Img variant="top" className='card-img' src={dogLogo} />
+                        <button class='like-btn' onClick={ () => this.handleSaveClick() } >{this.state.liked ? <Icon.HeartFill/> : <Icon.Heart /> }</button>
+                    </Carousel.Item>
         }
         else {
             return this.props.pet.photos.map( photo =>
