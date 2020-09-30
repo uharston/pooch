@@ -37,15 +37,14 @@ class LandingPageSearchBar extends Component {
     }
 
     render() {
-        console.log(this.props.breeds)
         return(
             <div className="landing-page-search-bar">
 
                 <Form inline className='justify-content-center' onSubmit={ (event) => this.handleSubmit(event) }>
-                    <FormControl  type='text' list='breeds' placeholder="Enter A Breed" class='dropdown' onChange={ (e) => this.handleBreedChange(e) } />
+                    <FormControl  type='text' list='breeds' placeholder="Enter A Breed" className='dropdown' onChange={ (e) => this.handleBreedChange(e) } />
                     <datalist id='breeds'>
                         <option value="Any Breed"/>
-                        {this.props.breeds.map( breed => <option value={breed} /> )}
+                        {this.props.breeds.map( (breed, k) => <option key={k} value={breed} /> )}
                     </datalist>
                     <GooglePlacesAutocomplete 
                         apiKey={process.env.REACT_APP_GOOGLE_PLACES_API_KEY} 
