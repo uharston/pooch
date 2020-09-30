@@ -3,9 +3,10 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds:
     
     switch(action.type) {
 
-        case "RETRIEVE_FAVORITES": 
+        case "RETRIEVE_FAVORITES":     
+        // debugger
             let updatedFavoriteList = state.user.favorite_pets
-            updatedFavoriteList.push(action.pets.animal)
+            updatedFavoriteList.push({...action.pets.animal, liked: true })
             return {
                 ...state, 
                 user: { ...state.user, 
@@ -13,13 +14,12 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds:
                 }
             }
             
-        
         case 'ADD_FAVORITE_PET':
-            
+            // debugger
             let updatedFavoriteIds = state.user.favorite_ids.push(action.response.data.pet_id)
             return {
                 ...state, 
-                user: { favorites: updatedFavoriteIds }
+                user: { favorite_ids: updatedFavoriteIds }
             }
         
         case 'LOGIN_USER': 
@@ -55,6 +55,7 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds:
             }
 
         case 'ADD_API_TOKEN': 
+        
             return {
                 ...state, 
                 api_token: { 
@@ -72,6 +73,7 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds:
             }
 
         case 'ADD_PETS': 
+        
             return {
                 ...state, 
                 pets: action.pets.animals, 
@@ -84,3 +86,4 @@ const petsReducer = ( state = { pets: [], loading: false, api_token: {}, breeds:
 }
 
 export default petsReducer
+
