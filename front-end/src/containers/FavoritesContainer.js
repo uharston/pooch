@@ -7,9 +7,10 @@ import Pets from '../components/Pets';
 class FavoritesContainer extends Component {
 
     componentDidUpdate() {
+        // debugger
         if(this.props.user.logged_in) {
             this.props.user.favorite_ids.map( fav => {
-                this.props.getFavoritePets(`https://api.petfinder.com/v2/animals/${fav.petfinder_id}`)
+               return this.props.getFavoritePets(`https://api.petfinder.com/v2/animals/${fav.petfinder_id}`)
             })
         }
     }
@@ -17,7 +18,7 @@ class FavoritesContainer extends Component {
  
     
     render() {
-        
+        debugger
         return(
             <div className='favorites-container'>
                 <Pets pets={this.props.user.favorite_pets} />
