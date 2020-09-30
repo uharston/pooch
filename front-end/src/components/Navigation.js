@@ -14,7 +14,7 @@ class Navigation extends Component {
         return(
             <div className='navigation'>
                 <Navbar bg='light' variant='dark' expand='lg'  className='justify-content-between' >
-                    <NavLink to='/'><img class="navigation-logo" src={logo} alt='pooch logo' /></NavLink>
+                    <NavLink to='/'><img className="navigation-logo" src={logo} alt='pooch logo' /></NavLink>
                     <Nav className='ml-auto'>
                         { this.props.user.logged_in ? <LogoutBtn user={this.props.user} /> : <LoginBtn/> }
                     </Nav>
