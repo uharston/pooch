@@ -13,10 +13,10 @@ export const fetchPets = function(param) {
         dispatch({ type: 'LOADING_PETS' })
 
         if( !getState().api_token.token || getState().api_token.expires - new Date().getTime() < 1 ) {
-
+            debugger
             fetch("https://api.petfinder.com/v2/oauth2/token", {
                 //abstract client secret and ID 
-                body: "grant_type=client_credentials&client_id=70TgEtMrkn14Jh5jt2TjSW2VCMDoVLwXPWF7VxfXMhFQ2SfJus&client_secret=L8OzS0UL8pwnrYwFtuDiADZ4sBSr3HOlIK5SkjK3",
+                body: `grant_type=client_credentials&client_id=${process.env.REACT_APP_PETFINDER_CLIENT_ID}&client_secret=${process.env.REACT_APP_PETFINDER_CLIENT_SECRET}`,
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
