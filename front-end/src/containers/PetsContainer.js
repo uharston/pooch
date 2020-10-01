@@ -8,17 +8,29 @@ import Pets from '../components/Pets';
 
 class PetsContainer extends Component {
 
+    state = {
+        
+    }
+
     componentDidMount() {
         let breed 
         this.props.match.params.breed === 'all-dogs' ? breed = '' : breed = this.props.match.params.breed 
         let url = `https://api.petfinder.com/v2/animals?location=${this.props.match.params.city},%20${this.props.match.params.state}&type=dog${this.props.match.params.page}&breed=${breed}`
+        console.log('a')
         this.props.fetchPets( url )
+        console.log('b')
+    }
+
+    handleClick = () => {
+        console.log(this.props)
+        console.log(this.props.pets.filter( pet => pet.attributes.spayed_neutered === true ))
     }
 
     render() {
         return(
             <div className='search-container'>
-                <Pets pets={this.props.pets} />
+                <button onClick={ () => this.handleClick() } >House-Trained </button>
+                <Pets pets={ this.props.pets } />
                 <PetsPagination pagination={this.props.pagination} fetchPets={this.props.fetchPets} /> 
             </div>
         )
