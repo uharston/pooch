@@ -9,7 +9,9 @@ import Pets from '../components/Pets';
 class PetsContainer extends Component {
 
     state = {
-        houseTrained: false 
+        houseTrained: false, 
+        puppy: false, 
+        gender: false
     }
 
     componentDidMount() {
@@ -19,21 +21,29 @@ class PetsContainer extends Component {
         this.props.fetchPets( url )
     }
 
-    handleClick = () => {
+    handleClick = (e) => {
+        let key = e.target.value 
         this.setState( prevState => ({
-            houseTrained: !prevState.houseTrained 
+            [key]: !prevState[key]
         }))
-
     }
 
+
     filterProps = () => {
-        return this.state.houseTrained ? this.props.pets.filter( pet => pet.attributes.spayed_neutered === true ) : this.props.pets
+        let filtered 
+        filtered = (this.state.houseTrained ? this.props.pets.filter( pet => pet.attributes.spayed_neutered === true ) : this.props.pets)
+        return this.state.puppy ? filtered.filter( pet => pet.age === ('Young' || 'Baby') ) : filtered
     }
 
     render() {
         return(
             <div className='search-container'>
-                <button onClick={ () => this.handleClick() } >House-Trained </button>
+                <button value='houseTrained' onClick={ (e) => this.handleClick(e) } > House-Trained </button>
+                <button value='puppy' onClick={ (e) => this.handleClick(e) } > Puppy </button>
+                <select>
+
+                </select>
+
                 <Pets pets={ this.filterProps() } />
                 <PetsPagination pagination={this.props.pagination} fetchPets={this.props.fetchPets} /> 
             </div>
