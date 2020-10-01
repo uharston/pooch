@@ -1,0 +1,73 @@
+#Pooch 
+
+Pooch is a dogs up for adoption finder powered by PetFinder's API. 
+
+Checklist
+
+[X] Find a logo 
+
+Landing Page 
+    [X] Search Bar
+    [] Background Image
+    [X] Navigation Bar 
+
+[X] Set up routes 
+    [X] Set up navbar
+    [X] Routes boiler plate
+
+[X] Do first fetch request 
+    [X] Learn how to redirect on form submission 
+
+[X] Neaten up form input to a nice url params 
+
+[X] Seperate and set timer on access token fetch call 
+
+[X] Set up pagination on index page 
+    [X] Set up paginated links
+
+[X] Create suggestive search bar for location 
+
+[X] Create suggestive search bar for breeds 
+
+[X] Connect backend to git hub
+
+[X] Abstract axios login call to actions 
+
+[X] Post request to back-end 
+    [X] Get back-end working 
+
+[X] Login feature 
+//Display log in button when logged out. Display logout button and picture when logged in
+
+[X] Logout Feature
+    [X] Clear the store on logout 
+
+[] Make .env hidden 
+
+[] Prevent GoogleBtn from making fetch call when component mounts 
+
+[] Abstract reducers
+
+[] Clearly define all the routes and how I will implement those routes 
+
+[] Do CSS
+    [] Nav Bar
+        [] Home Button - Pooch Image 
+        [] Login Button 
+        [] Favorites Button 
+    [] Landing Page 
+    [] Index Page 
+    [] Show Page 
+
+[] Make a show page for dog 
+
+[] Improve Pagination 
+
+//When the user logs in, a fetch call retrieve the user's information which is then stored in the store
+//
+//When a user likes a pet, the store is update with the pet's information and is sent to the server
+//through user#update
+
+
+
+
