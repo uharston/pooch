@@ -12,11 +12,11 @@ export const postFavoritePet = (response) => {
 export const getFavoritePets = (param) => {
     return (dispatch, getState) => {
         dispatch({ type: 'LOADING_PETS' })
-
+        debugger
         if( !getState().api_token.token || getState().api_token.expires - new Date().getTime() < 1 ) {
 
             fetch("https://api.petfinder.com/v2/oauth2/token", {
-                body: "grant_type=client_credentials&client_id=70TgEtMrkn14Jh5jt2TjSW2VCMDoVLwXPWF7VxfXMhFQ2SfJus&client_secret=L8OzS0UL8pwnrYwFtuDiADZ4sBSr3HOlIK5SkjK3",
+                body: `grant_type=client_credentials&client_id=${process.env.REACT_APP_PETFINDER_CLIENT_ID}&client_secret=${process.env.REACT_APP_PETFINDER_CLIENT_SECRET}`,
 
                 // body: `grant_type=client_credentials&client_id=${process.env.REACT_APP_PETFINDER_CLIENT_ID}&client_secret=${process.env.REACT_APP_PETFINDER_CLIENT_SECRET}`,
                 headers: {
@@ -26,7 +26,7 @@ export const getFavoritePets = (param) => {
                 .then(response => response.json() )
                 .then(responseJSON => dispatch({ type: 'ADD_API_TOKEN', responseJSON }) )
                 .then(token => {
-                    // console.log( token )
+                    console.log('HERE', token )
                     
                     fetch(param, {
                         headers: { 
@@ -34,7 +34,7 @@ export const getFavoritePets = (param) => {
                         })
                         .then(response => response.json())
                         .then(responseJSON => {
-                            // console.log(responseJSON)
+                             console.log('there', responseJSON)
                             dispatch({ 
                                 type: 'RETRIEVE_FAVORITES', 
                                 pets: responseJSON,
