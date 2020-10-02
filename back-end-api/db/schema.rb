@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_221933) do
+ActiveRecord::Schema.define(version: 2020_10_01_151759) do
+
+  create_table "api_calls", force: :cascade do |t|
+    t.string "name"
+    t.string "api_token"
+    t.integer "expires_in"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "breeds", force: :cascade do |t|
     t.string "name"

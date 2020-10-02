@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :breeds, only: %i[index show update]
   post '/user' => 'users#update'
   post '/login' => 'sessions#omniauth'
+  post 'pets' => 'api_calls#petfinder'
 
 end
