@@ -51,6 +51,7 @@ Landing Page
 [] Abstract Code 
     [] General Abstractions
     [] Abstract reducers
+    [] Abstract getFavoritePets to back-end-api 
 
 [] Make a filter bar up top 
 
@@ -67,6 +68,8 @@ Landing Page
 [] Properly grab input value from Google Places Search Bar 
 
 [] Move Images to One Folder 
+
+[] Use JSON Serializers - FastJSONAPI or another? 
 
 
 
