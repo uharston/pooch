@@ -10,7 +10,7 @@ export const fetchBreeds = () => {
 
 export const fetchPets = function(param) {
 
-    return function(dispatch, getState)  {
+    return function(dispatch)  {
         
         dispatch({ type: 'LOADING_PETS' })
         axios.post("http://127.0.0.1:4000/pets", {url: param}, {withCredentials: true} )

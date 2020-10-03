@@ -17,8 +17,6 @@ export const getFavoritePets = (param) => {
 
             fetch("https://api.petfinder.com/v2/oauth2/token", {
                 body: `grant_type=client_credentials&client_id=${process.env.REACT_APP_PETFINDER_CLIENT_ID}&client_secret=${process.env.REACT_APP_PETFINDER_CLIENT_SECRET}`,
-
-                // body: `grant_type=client_credentials&client_id=${process.env.REACT_APP_PETFINDER_CLIENT_ID}&client_secret=${process.env.REACT_APP_PETFINDER_CLIENT_SECRET}`,
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
