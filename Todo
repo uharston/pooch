@@ -8,7 +8,6 @@ Checklist
 
 Landing Page 
     [X] Search Bar
-    [] Background Image
     [X] Navigation Bar 
 
 [X] Set up routes 
@@ -42,31 +41,35 @@ Landing Page
 [X] Logout Feature
     [X] Clear the store on logout 
 
-[] Make .env hidden 
+[X] Make .env hidden 
 
-[] Prevent GoogleBtn from making fetch call when component mounts 
+[X] Prevent GoogleBtn from making fetch call when component mounts 
 
-[] Abstract reducers
+[X] Clearly define all the routes and how I will implement those routes
+[X] Make a show page for dog 
 
-[] Clearly define all the routes and how I will implement those routes 
+[] Abstract Code 
+    [] General Abstractions
+    [] Abstract reducers
 
-[] Do CSS
-    [] Nav Bar
-        [] Home Button - Pooch Image 
-        [] Login Button 
-        [] Favorites Button 
-    [] Landing Page 
-    [] Index Page 
-    [] Show Page 
-
-[] Make a show page for dog 
+[] Make a filter bar up top 
 
 [] Improve Pagination 
+    [] Move it to top of page
+    [] Create more buttons 
 
-//When the user logs in, a fetch call retrieve the user's information which is then stored in the store
-//
-//When a user likes a pet, the store is update with the pet's information and is sent to the server
-//through user#update
+[] Improve Like Button 
+    [] Make like button work with carousel 
+    [] Keep the like buttons red on different pages  
+
+[] Background Image
+
+[] Properly grab input value from Google Places Search Bar 
+
+[] Move Images to One Folder 
+
+
+
 
 
 
