@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
 import ReactCardFlip from 'react-card-flip';
-import Pet from './Pet';
+import PetCardFront from './PetCardFront';
 import PetCardBack from './PetCardBack'
 
 class PetCard extends Component {
@@ -19,7 +19,7 @@ class PetCard extends Component {
         return(
             <div className='pets'>
                 <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-                    <Pet pet={this.props.pet} handleFlip={this.handleFlip} />
+                    <PetCardFront pet={this.props.pet} handleFlip={this.handleFlip} />
                     <PetCardBack pet={this.props.pet} handleFlip={this.handleFlip} />
                 </ReactCardFlip>            
             </div>

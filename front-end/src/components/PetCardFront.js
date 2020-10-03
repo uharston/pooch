@@ -6,7 +6,7 @@ import {Card,  Button, Carousel } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 
 
-class Pet extends Component {
+class PetCardFront extends Component {
 
     state = {
         liked: false
@@ -73,4 +73,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { postFavoritePet } ) (Pet) 
+export default connect(mapStateToProps, { postFavoritePet } ) (PetCardFront) 
