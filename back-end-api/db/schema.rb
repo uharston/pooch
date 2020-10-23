@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_10_01_151759) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "api_calls", force: :cascade do |t|
     t.string "name"
     t.string "api_token"
@@ -24,10 +27,29 @@ ActiveRecord::Schema.define(version: 2020_10_01_151759) do
     t.string "name"
   end
 
+  create_table "cars", force: :cascade do |t|
+    t.string "make"
+    t.string "model"
+    t.integer "year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "total_games", default: 0
+    t.integer "total_correct", default: 0
+    t.integer "likes", default: 0
+    t.integer "dislikes", default: 0
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "url"
+    t.integer "car_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "pets", force: :cascade do |t|
     t.integer "petfinder_id"
     t.string "url"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
