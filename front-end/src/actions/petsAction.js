@@ -11,7 +11,7 @@ export const fetchBreeds = () => {
 export const fetchPets = function(param) {
 
     return function(dispatch)  {
-        
+        console.log('hello')
         dispatch({ type: 'LOADING_PETS' })
         axios.post("https://safe-cliffs-66235.herokuapp.com/pets", {url: param}, {withCredentials: true} )
             .then( petResponse => {
