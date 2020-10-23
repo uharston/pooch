@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Pagination } from 'react-bootstrap';
+import { Pagination, Button, DropdownButton, Dropdown, Container, Row, Col } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 
 class PetsPagination extends Component {
@@ -36,15 +36,39 @@ class PetsPagination extends Component {
     render = () => {
         if(this.props.pagination) {
             return (
-                <div className='pets-pagination'>
-                    <Pagination size='lg' className='justify-content-center'>
-                        <Pagination.First onClick={() => this.handleClick('first')}/>
-                        { this.props.pagination.current_page !== 1 ? <Pagination.Prev onClick={() => this.handleClick('previous')}/> : null }
-                        <Pagination.Item active >{this.props.pagination.current_page}</Pagination.Item>
-                        {this.props.pagination.current_page === this.props.pagination.total_pages - 1 || this.props.pagination.current_page === this.props.pagination.total_pages ? null : <Pagination.Next onClick={() => this.handleClick('next')} />}
-                        {this.props.pagination.current_page === this.props.pagination.total_pages ? <Pagination.Last disabled onClick={() => this.handleClick('last')} /> : <Pagination.Last onClick={() => this.handleClick('last')} />}
-                    </Pagination>
-                </div>
+                <span className='pets-pagination'>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <DropdownButton id="dropdown-item-button" title="Filter Results" >
+                                    <Dropdown.Item as='button' onClick={ (e) => this.props.handleButtonClick(e) } value='houseTrained' >
+                                        House Trained
+                                    </Dropdown.Item>
+                                    <Dropdown.Item as='button' onClick={ (e) => this.props.handleButtonClick(e) } value='puppy' >
+                                        Puppy
+                                    </Dropdown.Item>
+                                </DropdownButton>
+                                
+                            </Col>
+                            <Col>
+                            </Col>
+                            <Col className='text-right' md={{ span: 3, offset: 6}} >
+                                <Pagination >
+                                    <Pagination.First onClick={() => this.handleClick('first')}/>
+                                    { this.props.pagination.current_page !== 1 ? <Pagination.Prev onClick={() => this.handleClick('previous')}/> : null }
+                                    <Pagination.Item active >{this.props.pagination.current_page}</Pagination.Item>
+                                    {this.props.pagination.current_page === this.props.pagination.total_pages - 1 || this.props.pagination.current_page === this.props.pagination.total_pages ? null : <Pagination.Next onClick={() => this.handleClick('next')} />}
+                                    {this.props.pagination.current_page === this.props.pagination.total_pages ? <Pagination.Last disabled onClick={() => this.handleClick('last')} /> : <Pagination.Last onClick={() => this.handleClick('last')} />}
+
+                                </Pagination>
+                            </Col>
+                        </Row>
+                    </Container>
+                   
+                        
+
+               
+                </span>
             )
         }
         return null    
