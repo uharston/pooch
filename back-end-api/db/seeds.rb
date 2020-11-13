@@ -277,3 +277,5 @@ LandingPageContainer.js:16 Yorkshire Terrier"
 step2 = string.split("LandingPageContainer.js:16")
 
 step2.each { |breed| Breed.create( name: breed.strip )}
+
+ApiCall.create(name: 'petfinder')
