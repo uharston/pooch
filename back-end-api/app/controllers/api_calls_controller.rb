@@ -29,7 +29,7 @@ class ApiCallsController < ApplicationController
         # else 
         #     render json: {petfinder_response: "Api call error!" }
         # end
-        render json: {petfinder_response: petfinder.name, api_token: petfinder.api_token, token_response: token_response }
+        render json: {petfinder_response: petfinder.name, api_token: petfinder.api_token }
 
     end 
     
