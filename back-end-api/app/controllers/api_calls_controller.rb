@@ -5,7 +5,7 @@ class ApiCallsController < ApplicationController
         petfinder = ApiCall.find_by(name: 'petfinder') 
             token_response = Faraday.post("https://api.petfinder.com/v2/oauth2/token" ) do |req| 
                 req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-                req.body = "grant_type=client_credentials&client_id=#{ENV['PETFINDER_CLIENT_ID']}&client_secret=#{ENV['PETFINDER_CLIENT_SECRET']}"  
+                req.body = "grant_type=client_credentials&client_id=70TgEtMrkn14Jh5jt2TjSW2VCMDoVLwXPWF7VxfXMhFQ2SfJus&client_secret=L8OzS0UL8pwnrYwFtuDiADZ4sBSr3HOlIK5SkjK3"  
             end
         # if !petfinder 
         #     render json: {petfinder_response: "Could not find a petfinder instance in database!" }
