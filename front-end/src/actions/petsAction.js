@@ -5,13 +5,14 @@ export const fetchBreeds = () => {
         fetch("https://safe-cliffs-66235.herokuapp.com/breeds")
         .then(response => response.json())
         .then(breeds => dispatch({ type: 'ADD_BREEDS', breeds}))
+        .catch(error => console.log('fetchBreeds =>', error))
     }
 }
 
 export const fetchPets = function(param) {
 
     return function(dispatch)  {
-        console.log('hello')
+        console.log('fetchPets')
         dispatch({ type: 'LOADING_PETS' })
         axios.post("https://safe-cliffs-66235.herokuapp.com/pets", {url: param}, {withCredentials: true} )
             .then( petResponse => {
@@ -19,6 +20,7 @@ export const fetchPets = function(param) {
                 console.log(petResponse)
                 dispatch({ type: 'ADD_PETS', pets: petResponse.data.petfinder_response })
             })
+            .catch(error => console.log('fetchPets =>', error))
 }
 }
 
