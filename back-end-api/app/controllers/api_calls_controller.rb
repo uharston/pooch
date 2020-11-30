@@ -20,7 +20,7 @@ class ApiCallsController < ApplicationController
         resp = Faraday.get( params[:url] ) do |req| 
             req.headers['Authorization'] = "Bearer #{petfinder.api_token}"
         end
-        if resp? 
+        if resp 
             render json: {petfinder_response: JSON.parse(resp.body) }
         else 
             render json: {petfinder_response: "Api call error!" }
