@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_151759) do
+ActiveRecord::Schema.define(version: 2020_11_30_184010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "api_calls", force: :cascade do |t|
     t.string "name"
-    t.string "api_token"
-    t.integer "expires_in"
+    t.text "api_token"
+    t.bigint "expires_in"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
