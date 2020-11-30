@@ -3,6 +3,9 @@ class ApiCallsController < ApplicationController
 
     def petfinder 
         petfinder = ApiCall.find_by(name: 'petfinder') 
+        if !petfinder 
+            render json: {petfinder_response: "Could not find a petfinder instance in database!" }
+        end
         if !petfinder.api_token || petfinder.expired? 
             token_response = Faraday.post("https://api.petfinder.com/v2/oauth2/token" ) do |req| 
                 req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
