@@ -17,7 +17,7 @@ class ApiCallsController < ApplicationController
                 req.body = "grant_type=client_credentials&client_id=#{ENV['PETFINDER_CLIENT_ID']}&client_secret=#{ENV['PETFINDER_CLIENT_SECRET']}"  
             end
             data = JSON.parse(token_response.body)
-            expires = (Time.now.to_f * 1000) + (data["expires_in"] * 1000)
+            expires = (Time.now.to_i * 1000) + (data["expires_in"] * 1000)
             
             # petfinder.update(api_token: data["access_token"], expires_in: expires ) 
         end
