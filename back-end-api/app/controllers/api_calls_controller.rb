@@ -22,16 +22,16 @@ class ApiCallsController < ApplicationController
             petfinder.update(api_token: data["access_token"], expires_in: expires ) 
         end
         
-        # resp = Faraday.get( params[:url] ) do |req| 
-        #     req.headers['Authorization'] = "Bearer #{petfinder.api_token}"
-        # end
-        # if resp 
-        #     render json: {petfinder_response: JSON.parse(resp.body) }
-        # else 
-        #     render json: {petfinder_response: "Api call error!" }
-        # end
-        render json: {petfinder_response: 'hello'}
-        # render json: {petfinder_response: petfinder.name, api_token: petfinder.api_token, token_response: token_response }
+        resp = Faraday.get( params[:url] ) do |req| 
+            req.headers['Authorization'] = "Bearer #{petfinder.api_token}"
+        end
+        if resp 
+            # render json: {petfinder_response: JSON.parse(resp.body) }
+            render json: {petfinder_response: petfinder.name, api_token: petfinder.api_token, token_response: token_response }
+        else 
+            render json: {petfinder_response: "Api call error!" }
+        end
+        # render json: {petfinder_response: 'hello'}
 
     end 
     
