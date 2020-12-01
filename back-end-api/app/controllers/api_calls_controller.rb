@@ -11,7 +11,7 @@ class ApiCallsController < ApplicationController
         # if !petfinder 
         #     render json: {petfinder_response: "Could not find a petfinder instance in database!" }
         # end
-        # if !petfinder.api_token || petfinder.expired? 
+        if !petfinder.api_token || petfinder.expired? 
             token_response = Faraday.post("https://api.petfinder.com/v2/oauth2/token" ) do |req| 
                 req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
                 req.body = "grant_type=client_credentials&client_id=#{ENV['PETFINDER_CLIENT_ID']}&client_secret=#{ENV['PETFINDER_CLIENT_SECRET']}"  
@@ -20,7 +20,7 @@ class ApiCallsController < ApplicationController
             expires = (Time.now.to_f * 1000) + (data["expires_in"] * 1000)
             
             # petfinder.update(api_token: data["access_token"], expires_in: expires ) 
-        # end
+        end
         
         # resp = Faraday.get( params[:url] ) do |req| 
         #     req.headers['Authorization'] = "Bearer #{petfinder.api_token}"
