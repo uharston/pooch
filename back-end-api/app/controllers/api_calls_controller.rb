@@ -2,7 +2,8 @@ require 'faraday'
 class ApiCallsController < ApplicationController 
 
     def petfinder 
-        # petfinder = ApiCall.find_by(name: 'petfinder') 
+        byebug
+        petfinder = ApiCall.find_by(name: 'petfinder') 
         #     token_response = Faraday.post("https://api.petfinder.com/v2/oauth2/token" ) do |req| 
         #         req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
         #         req.body = "grant_type=client_credentials&client_id=#{ENV['PETFINDER_CLIENT_ID']}&client_secret=#{ENV['PETFINDER_CLIENT_SECRET']}"  
