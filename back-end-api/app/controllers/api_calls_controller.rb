@@ -19,7 +19,7 @@ class ApiCallsController < ApplicationController
             data = JSON.parse(token_response.body)
             expires = (Time.now.to_i * 1000) + (data["expires_in"] * 1000)
             
-            # petfinder.update(api_token: data["access_token"], expires_in: expires ) 
+            petfinder.update(api_token: data["access_token"], expires_in: expires ) 
         end
         
         # resp = Faraday.get( params[:url] ) do |req| 
