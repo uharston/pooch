@@ -19,7 +19,7 @@ class LandingPageSearchBar extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        debugger
+    
         const place = event.target.getElementsByClassName(' css-uv499-singleValue')[0].textContent
         const [breed, state, city] = this.sanitizeRouteParams(place) 
         let route = `${breed}/${state}/${city}`
