@@ -2,7 +2,7 @@ require 'faraday'
 class ApiCallsController < ApplicationController 
 
     def petfinder 
-        byebug
+        
         petfinder = ApiCall.find_by(name: 'petfinder') 
         #     token_response = Faraday.post("https://api.petfinder.com/v2/oauth2/token" ) do |req| 
         #         req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
