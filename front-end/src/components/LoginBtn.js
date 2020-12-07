@@ -10,7 +10,6 @@ class LoginBtn extends Component {
 
     onSuccess = (response) => {
         this.props.fetchLogin(response)
-        console.log('[Login Success] currentUser:', response );
     }
 
     onFailure = (response) => {
