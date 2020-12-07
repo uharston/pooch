@@ -19,7 +19,7 @@ class PetsContainer extends Component {
     componentDidMount() {
         let breed 
         this.props.match.params.breed === 'all-dogs' ? breed = '' : breed = this.props.match.params.breed 
-        let url = `https://api.petfinder.com/v2/animals?location=${this.props.match.params.city},%20${this.props.match.params.state}&type=dog${this.props.match.params.page}&breed=${breed}`
+        let url = `https://api.petfinder.com/v2/animals?location=${this.props.match.params.city.replace('-', '%20')},%20${this.props.match.params.state}&type=dog${this.props.match.params.page}&breed=${breed}`
         this.props.fetchPets( url )
     }
 
