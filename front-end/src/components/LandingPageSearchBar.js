@@ -27,9 +27,11 @@ class LandingPageSearchBar extends Component {
     }
 
     sanitizeRouteParams = (place) => {
+        //BREED
         let breed
         this.state.breed === 'Any Breed' ? breed = 'all-dogs' : breed = this.state.breed
         const sanitizedBreed = breed.split(' ').map( word => word.toLowerCase().trim() ).join('-')
+        //CITY AND STATE
         let [city, state] = place.split(', ' ).slice(-3)
         const sanitizedCity = city.split(' ').map( word => word.toLowerCase().trim() ).join('-')
         const sanitizedState = state.toLowerCase().trim() 
