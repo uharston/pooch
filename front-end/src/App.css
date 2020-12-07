@@ -16,7 +16,6 @@
 }
 
 .card-img {
-  width: 250vw; /* You can set the dimensions to whatever you want */
   height: 50vh;
   object-fit: cover;
 }
