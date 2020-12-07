@@ -3,7 +3,7 @@ import  axios  from 'axios';
 export const fetchLogin = (response) => {
     return (dispatch) => {
         
-        axios.post('http://mypooch.dog/login', response, {withCredentials: true})
+        axios.post('https://mypooch.dog/login', response, {withCredentials: true})
         .then(response => {
             if(!response.data.error) {
                dispatch({type: "LOGIN_USER", response})

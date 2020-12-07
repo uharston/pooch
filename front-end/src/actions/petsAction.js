@@ -2,7 +2,7 @@ import  axios  from 'axios';
 
 export const fetchBreeds = () => {
     return (dispatch) => {
-        fetch("http://mypooch.dog/breeds")
+        fetch("https://mypooch.dog/breeds")
         .then(response => response.json())
         .then(breeds => dispatch({ type: 'ADD_BREEDS', breeds}))
         .catch(error => console.log('fetchBreeds =>', error))
@@ -14,7 +14,7 @@ export const fetchPets = function(param) {
     return function(dispatch)  {
         console.log('fetchPets')
         dispatch({ type: 'LOADING_PETS' })
-        axios.post("http://mypooch.dog/pets", {url: param}, {withCredentials: true} )
+        axios.post("https://mypooch.dog/pets", {url: param}, {withCredentials: true} )
             .then( petResponse => {
                 
                 console.log(petResponse)
