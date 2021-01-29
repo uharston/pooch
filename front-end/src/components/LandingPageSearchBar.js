@@ -56,7 +56,7 @@ class LandingPageSearchBar extends Component {
                             }
                         }}
                         selectProps={{
-                            placeholder: "Enter Location....",
+                            placeholder: "Enter Location...",
                             styles: {
                                 input: (provided) => ({
                                   ...provided,
